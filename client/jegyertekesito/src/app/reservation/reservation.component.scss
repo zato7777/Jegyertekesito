@@ -1,0 +1,95 @@
+.reservation {
+    max-height: 94vh;
+}
+
+.seat-grid {
+    display: grid;
+    gap: 6px;
+    margin-top: 60px;
+}
+
+.seat-box {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: lightgray;
+    border: 1px solid #999;
+    user-select: none;
+}
+
+.seat-box.selected {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+
+.seat-box.booked {
+    background-color: #f44336;
+    color: white;
+    cursor: not-allowed;
+}
+
+.seat-box.unavailable {
+    background-color: #f44336;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.seat-box:hover {
+    background-color: #bbb;
+}
+
+.discount-section {
+margin: 20px 0;
+}
+
+.discount-section-select {
+    margin-left: 10px;
+}
+
+.discount-section-div {
+    margin-bottom: 10px;
+}
+
+.reserve-btn {
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #2196f3;
+color: white;
+border: none;
+border-radius: 6px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.reserve-btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #3f51b5;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+    z-index: 1000;
+}
+
+mat-icon {
+    font-size: 24px;
+}
+
+mat-icon:hover {
+    color: #303f9f;
+}

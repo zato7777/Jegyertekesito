@@ -1,0 +1,13 @@
+# root
+*.log
+.env
+.vscode/
+
+# server
+/server/node_modules/
+/server/build/
+
+# client
+client/jegyertekesito/node_modules/
+client/jegyertekesito/dist/
+client/jegyertekesito/.angular/

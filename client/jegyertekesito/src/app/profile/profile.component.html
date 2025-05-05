@@ -1,0 +1,33 @@
+<div class="profile-container" *ngIf="profileForm">
+    <h2>Your profile</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="onUpdate()">
+        <mat-form-field class="full-width">
+            <mat-label>Nickname</mat-label>
+            <input matInput formControlName="nickname" type="text" required [ngClass]="{'invalid-input': profileForm.get('nickname')?.errors && (profileForm.get('nickname')?.dirty || profileForm.get('nickname')?.touched)}" />
+        </mat-form-field>
+        <div *ngIf="(profileForm.get('nickname')?.invalid && (profileForm.get('nickname')?.dirty || profileForm.get('nickname')?.touched))">
+            <p *ngIf="profileForm.get('nickname')?.errors && profileForm.get('nickname')?.errors!['required']">Nickname is required!</p>
+            <p *ngIf="profileForm.get('nickname')?.errors && profileForm.get('nickname')?.errors!['maxlength']">Nickname must be less than 30 charachters long!</p>
+        </div>
+
+        <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" type="text" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" type="text" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Telephone</mat-label>
+            <input matInput formControlName="telephone" type="tel" name="phone" title="Accepted format: +36201234567 or 06201234567" />
+        </mat-form-field>
+        <div *ngIf="profileForm.get('telephone')?.errors?.['invalidPhone'] && profileForm.get('telephone')?.dirty">
+            <p>Phone number is invalid! Accepted format: +36201234567 or 06201234567</p>
+        </div>
+        <button type="submit" mat-raised-button color="primary" (click)="onUpdate()" [disabled]="!profileForm.valid">Save changes</button>
+        <button type="reset" mat-raised-button color="warn" (click)="confirmDelete()">Delete account</button>
+    </form>
+</div>

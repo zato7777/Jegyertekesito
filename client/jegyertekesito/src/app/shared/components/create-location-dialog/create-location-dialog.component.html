@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Create Location</h2>
+<mat-dialog-content [formGroup]="locationForm">
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" type="text" placeholder="Name" required [ngClass]="{'invalid-input': locationForm.get('name')?.errors && (locationForm.get('name')?.dirty || locationForm.get('name')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(locationForm.get('name')?.invalid && (locationForm.get('name')?.dirty || locationForm.get('name')?.touched))">
+    <p *ngIf="locationForm.get('name')?.errors && locationForm.get('name')?.errors!['required']">Nickname is required!</p>
+    <p *ngIf="locationForm.get('name')?.errors && locationForm.get('name')?.errors!['maxlength']">Nickname must be less than 100 charachters long!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" type="text" placeholder="Address" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Rows</mat-label>
+    <input matInput formControlName="rows" type="number" placeholder="0" required [ngClass]="{'invalid-input': locationForm.get('rows')?.errors && (locationForm.get('rows')?.dirty || locationForm.get('rows')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(locationForm.get('rows')?.invalid && (locationForm.get('rows')?.dirty || locationForm.get('rows')?.touched))">
+    <p *ngIf="locationForm.get('rows')?.errors && locationForm.get('rows')?.errors!['required']">Rows is required!</p>
+    <p *ngIf="locationForm.get('rows')?.errors && locationForm.get('rows')?.errors!['min']">Count of rows must be at least 1!</p>
+    <p *ngIf="locationForm.get('rows')?.errors && locationForm.get('rows')?.errors!['max']">Count of rows must be less than or equal to 100!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Columns</mat-label>
+    <input matInput formControlName="columns" type="number" placeholder="0" required [ngClass]="{'invalid-input': locationForm.get('columns')?.errors && (locationForm.get('columns')?.dirty || locationForm.get('columns')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(locationForm.get('columns')?.invalid && (locationForm.get('columns')?.dirty || locationForm.get('columns')?.touched))">
+    <p *ngIf="locationForm.get('columns')?.errors && locationForm.get('columns')?.errors!['required']">Columns is required!</p>
+    <p *ngIf="locationForm.get('rows')?.errors && locationForm.get('rows')?.errors!['min']">Count of columns must be at least 1!</p>
+    <p *ngIf="locationForm.get('rows')?.errors && locationForm.get('rows')?.errors!['max']">Count of columns must be less than or equal to 100!</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button type="submit" mat-raised-button color="primary" (click)="onCreate()" [disabled]="!locationForm.valid">Create</button>
+  <button type="reset" mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

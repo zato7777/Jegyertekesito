@@ -1,0 +1,51 @@
+<div class="create-button">
+    <button type="button" (click)="createEvent()">Create new Event</button>
+</div>
+
+<div class="table-container" *ngIf="events && events.length; else noEventsTemplate">
+    <table mat-table [dataSource]="events">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="defaultPrice">
+            <th mat-header-cell *matHeaderCellDef>Default price</th>
+            <td mat-cell *matCellDef="let element">{{element.defaultPrice}}</td>
+        </ng-container>
+        <ng-container matColumnDef="organizer">
+            <th mat-header-cell *matHeaderCellDef>Organizer</th>
+            <td mat-cell *matCellDef="let element">{{element.organizer?.name || "Deleted user!"}}</td>
+        </ng-container>
+        <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef>Location</th>
+            <td mat-cell *matCellDef="let element">{{element.location?.name || "Deleted location!"}}</td>
+        </ng-container>
+        <ng-container matColumnDef="images">
+            <th mat-header-cell *matHeaderCellDef>Images</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="image-container" *ngIf="element.images && element.images.length">
+                <img *ngFor="let img of element.images" [src]="img" alt="Event image" style="max-width: 100px; max-height: 100px; margin: 5px;">
+              </div>
+              <span *ngIf="!element.images || element.images.length === 0">No images</span>
+            </td>
+          </ng-container>
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let element; let i = index"><mat-icon fontIcon="edit" (click)="updateEvent(element._id, i)"></mat-icon></td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let element; let i = index"><mat-icon fontIcon="delete" (click)="deleteEvent(element._id, i)"></mat-icon></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+</div>
+
+<ng-template #noEventsTemplate>
+    <p>No events available.</p>
+</ng-template>

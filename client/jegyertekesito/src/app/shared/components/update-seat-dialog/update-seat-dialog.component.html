@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Update Seat</h2>
+<mat-dialog-content [formGroup]="seatForm">
+  <mat-form-field class="full-width">
+    <mat-label>Row</mat-label>
+    <input matInput formControlName="row" type="number" required [ngClass]="{'invalid-input': seatForm.get('row')?.errors && (seatForm.get('row')?.dirty || seatForm.get('row')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(seatForm.get('row')?.invalid && (seatForm.get('row')?.dirty || seatForm.get('row')?.touched))">
+    <p *ngIf="seatForm.get('row')?.errors && seatForm.get('row')?.errors!['required']">Row is required!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Number</mat-label>
+    <input matInput formControlName="number" type="number" required [ngClass]="{'invalid-input': seatForm.get('number')?.errors && (seatForm.get('number')?.dirty || seatForm.get('number')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(seatForm.get('number')?.invalid && (seatForm.get('number')?.dirty || seatForm.get('number')?.touched))">
+    <p *ngIf="seatForm.get('number')?.errors && seatForm.get('number')?.errors!['required']">Number is required!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option value="normal">Normal</mat-option>
+      <mat-option value="featured">Featured</mat-option>
+      <mat-option value="premium">Premium</mat-option>
+      <mat-option value="disabled">Disabled</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button type="submit" mat-raised-button color="primary" (click)="onUpdate()" [disabled]="!seatForm.valid">Update</button>
+  <button type="reset" mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

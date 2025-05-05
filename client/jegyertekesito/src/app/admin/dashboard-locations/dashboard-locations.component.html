@@ -1,0 +1,38 @@
+<div class="create-button">
+    <button type="button" (click)="createLocation()">Create new Location</button>
+</div>
+
+<div class="table-container" *ngIf="locations && locations.length; else noLocationsTemplate">
+    <table mat-table [dataSource]="locations">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let element">{{element.address}}</td>
+        </ng-container>
+        <ng-container matColumnDef="rows">
+            <th mat-header-cell *matHeaderCellDef>Rows</th>
+            <td mat-cell *matCellDef="let element">{{element.rows}}</td>
+        </ng-container>
+        <ng-container matColumnDef="columns">
+            <th mat-header-cell *matHeaderCellDef>Columns</th>
+            <td mat-cell *matCellDef="let element">{{element.columns}}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Edit</th>
+            <td mat-cell *matCellDef="let element; let i = index"><mat-icon fontIcon="edit" (click)="updateLocation(element._id, i)"></mat-icon></td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let element; let i = index"><mat-icon fontIcon="delete" (click)="deleteLocation(element._id, i)"></mat-icon></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+</div>
+
+<ng-template #noLocationsTemplate>
+    <p>No locations available.</p>
+</ng-template>

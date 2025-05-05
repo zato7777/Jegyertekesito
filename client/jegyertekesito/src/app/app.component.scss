@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+app-navbar {
+    flex-shrink: 0;
+    z-index: 1000;
+}
+
+.page-content {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,64 @@
+:host {
+    display: block;
+    padding: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+  
+mat-form-field {
+    width: 20%;
+    max-width: 400px;
+}
+  
+.dialog-actions {
+    display: flex;
+    justify-content: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+  
+mat-form-field textarea {
+    resize: vertical;
+    min-height: 3rem;
+}
+  
+h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+  
+button {
+    min-width: 100px;
+    margin: auto;
+}
+
+button[type="submit"] {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(8, 226, 99);
+    color: white;
+    padding: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(6, 80, 24);
+}
+
+button[type="reset"] {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(230, 42, 42);
+    color: white;
+    padding: 10px;
+}
+
+button[type="reset"]:hover {
+    background-color: rgb(119, 15, 15);
+}

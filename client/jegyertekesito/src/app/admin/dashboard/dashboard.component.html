@@ -1,0 +1,20 @@
+<mat-sidenav-container class="dashboard-container">
+  <mat-sidenav mode="side" opened>
+    <mat-toolbar>Menü</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard/dashboard-events" routerLinkActive="active">Events</a>
+        <a mat-list-item routerLink="/dashboard/dashboard-users" routerLinkActive="active">Users</a>
+        <a mat-list-item routerLink="/dashboard/dashboard-tickets" routerLinkActive="active">Tickets</a>
+        <a mat-list-item routerLink="/dashboard/dashboard-orders" routerLinkActive="active">Orders</a>
+        <a mat-list-item routerLink="/dashboard/dashboard-locations" routerLinkActive="active">Locations</a>
+        <a mat-list-item routerLink="/dashboard/dashboard-seats" routerLinkActive="active">Seats</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">Admin Dashboard</mat-toolbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

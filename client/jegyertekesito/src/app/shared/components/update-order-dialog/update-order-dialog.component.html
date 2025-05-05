@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Update Order</h2>
+<mat-dialog-content [formGroup]="orderForm">
+  <mat-form-field class="full-width">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="pending">Pending</mat-option>
+      <mat-option value="confirmed">Confirmed</mat-option>
+      <mat-option value="cancelled">Cancelled</mat-option>
+      <mat-option value="compleated">Compleated</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button type="submit" mat-raised-button color="primary" (click)="onUpdate()" [disabled]="!orderForm.valid">Update</button>
+  <button type="reset" mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

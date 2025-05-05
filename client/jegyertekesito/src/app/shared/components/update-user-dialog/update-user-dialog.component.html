@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Update User</h2>
+<mat-dialog-content [formGroup]="userForm">
+  <mat-form-field class="full-width">
+    <mat-label>Nickname</mat-label>
+    <input matInput formControlName="nickname" type="text" required [ngClass]="{'invalid-input': userForm.get('nickname')?.errors && (userForm.get('nickname')?.dirty || userForm.get('nickname')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(userForm.get('nickname')?.invalid && (userForm.get('nickname')?.dirty || userForm.get('nickname')?.touched))">
+    <p *ngIf="userForm.get('nickname')?.errors && userForm.get('nickname')?.errors!['required']">Nickname is required!</p>
+    <p *ngIf="userForm.get('nickname')?.errors && userForm.get('nickname')?.errors!['maxlength']">Nickname must be less than 30 charachters long!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" type="text" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" type="text" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Telephone</mat-label>
+    <input matInput formControlName="telephone" type="tel" name="phone" title="Accepted format: +36201234567 or 06201234567" />
+  </mat-form-field>
+  <div *ngIf="userForm.get('telephone')?.errors?.['invalidPhone'] && userForm.get('telephone')?.dirty">
+    <p>Phone number is invalid! Accepted format: +36201234567 or 06201234567</p>
+  </div>
+
+  <mat-label>
+    Check the box to create an admin user.
+    <mat-checkbox formControlName="isAdmin">Admin</mat-checkbox>
+  </mat-label>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button type="submit" mat-raised-button color="primary" (click)="onUpdate()" [disabled]="!userForm.valid">Update</button>
+  <button type="reset" mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

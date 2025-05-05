@@ -1,0 +1,17 @@
+<nav>
+    <ul>
+      <li><a routerLink="/events" routerLinkActive="active">Events</a></li>
+  
+      <ng-container *ngIf="!isLoggedIn">
+        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        <li><a routerLink="/register" routerLinkActive="active">Registration</a></li>
+      </ng-container>
+  
+      <ng-container *ngIf="isLoggedIn">
+        <li *ngIf="isAdmin"><a routerLink="/dashboard" routerLinkActive="active">Admin dashboard</a></li>
+        <li><a routerLink="/order-history" routerLinkActive="active">Order history</a></li>
+        <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ng-container>
+    </ul>
+  </nav>

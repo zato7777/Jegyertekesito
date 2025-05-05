@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Update Ticket</h2>
+<mat-dialog-content [formGroup]="ticketForm">
+  <mat-form-field class="full-width">
+    <mat-form-field class="full-width">
+      <mat-label>Discount</mat-label>
+      <mat-select formControlName="discount">
+        <mat-option value="none">No discount (0%)</mat-option>
+        <mat-option value="child">Child (50%)</mat-option>
+        <mat-option value="student">Student (25%)</mat-option>
+        <mat-option value="retired">Retired (30%)</mat-option>
+        <mat-option value="veteran">Veteran (10%)</mat-option>
+      </mat-select>
+    </mat-form-field>
+<mat-dialog-actions align="center">
+  <button type="submit" mat-raised-button color="primary" (click)="onUpdate()" [disabled]="!ticketForm.valid">Update</button>
+  <button type="reset" mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

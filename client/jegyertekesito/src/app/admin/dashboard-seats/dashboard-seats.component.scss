@@ -1,0 +1,91 @@
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table-container {
+    margin: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.create-button {
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.create-button-button {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(8, 226, 99);
+    width: 30%;
+    color: white;
+    padding: 10px;
+}
+
+.create-button-button:hover {
+    background-color: rgb(6, 80, 24);
+}
+
+.back-button {
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.back-button-button {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(230, 42, 42);
+    width: 30%;
+    color: white;
+    padding: 10px;
+}
+
+.back-button-button:hover {
+    background-color: rgb(119, 15, 15);
+}
+
+
+.generate-button {
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.generate-button-button {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(40, 156, 223);
+    width: 30%;
+    color: white;
+    padding: 10px;
+}
+
+.generate-button-button:hover {
+    background-color: rgb(22, 64, 153);
+}
+
+.delete-all-button {
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.delete-all-button-button {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(216, 235, 49);
+    width: 30%;
+    color: white;
+    padding: 10px;
+}
+
+.delete-all-button-button:hover {
+    background-color: rgb(64, 75, 14);
+}

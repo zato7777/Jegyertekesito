@@ -1,0 +1,52 @@
+.event-details-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.reservation-button {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.5rem;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.reservation-button:hover {
+    background-color: #303f9f;
+}
+
+.back-button {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+font-size: 1rem;
+color: #3f51b5;
+cursor: pointer;
+margin-bottom: 1.5rem;
+transition: color 0.3s ease;
+}
+
+mat-icon {
+    font-size: 24px;
+}
+
+mat-icon:hover {
+    color: #303f9f;
+}

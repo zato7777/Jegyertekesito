@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table-container {
+    margin: 20px;
+}
+
+.create-button {
+    text-align: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(8, 226, 99);
+    width: 30%;
+    color: white;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: rgb(6, 80, 24);
+}
+

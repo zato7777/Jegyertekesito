@@ -1,0 +1,38 @@
+<div class="reservation">
+  <div class="back-button" (click)="navigateToEventDetails()">
+    <mat-icon fontIcon="arrow_back"></mat-icon>
+    <span>Back to event details</span>
+  </div>
+
+  <h2>{{ event?.title }}</h2>
+
+  <div *ngIf="event && seats" class="seat-grid" [style.gridTemplateColumns]="'repeat(' + event.location.columns + ', 60px)'">
+    <div *ngFor="let row of rows; let i = index">
+      <ng-container *ngFor="let col of columns">
+        <div class="seat-box" [class.booked]="isSeatBooked(row, col)" [class.selected]="isSeatSelected(row, col)" [class.unavailable]="!seatExists(row, col)" (click)="onSeatClick(row, col)">
+          {{ row }}x{{ col }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="selectedSeats.length > 0" class="discount-section">
+    <h3>Discounts for selected seats:</h3>
+    <div *ngFor="let selected of selectedSeats">
+      <span>{{ selected.seat.row }}x{{ selected.seat.number }} ({{ selected.seat.category }})</span>
+      <select (change)="onDiscountChange($event, selected.seat._id)">
+        <option value="none">No discount (0%)</option>
+        <option value="child">Child (50%)</option>
+        <option value="student">Student (25%)</option>
+        <option value="retired">Retired (30%)</option>
+        <option value="veteran">Veteran (10%)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="total">
+      <strong>Final price:</strong> {{ totalPrice }} HUF
+  </div>
+
+  <button (click)="reservation()" class="reserve-btn" [disabled]="selectedSeats.length === 0">Foglalás véglegesítése</button>
+</div>

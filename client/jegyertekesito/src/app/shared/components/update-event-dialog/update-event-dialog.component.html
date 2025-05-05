@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Update Event</h2>
+<mat-dialog-content [formGroup]="eventForm">
+  <mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" type="text" required [ngClass]="{'invalid-input': eventForm.get('title')?.errors && (eventForm.get('title')?.dirty || eventForm.get('title')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(eventForm.get('title')?.invalid && (eventForm.get('title')?.dirty || eventForm.get('title')?.touched))">
+    <p *ngIf="eventForm.get('title')?.errors && eventForm.get('title')?.errors!['required']">Title is required!</p>
+    <p *ngIf="eventForm.get('title')?.errors && eventForm.get('title')?.errors!['maxlength']">Title must be less than 100 charachters long!</p>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Location</mat-label>
+    <mat-select formControlName="location" required [ngClass]="{'invalid-input': eventForm.get('location')?.errors && (eventForm.get('location')?.dirty || eventForm.get('location')?.touched)}">
+      <mat-option *ngFor="let location of locations" [value]="location._id">{{ location?.name || "Deleted location!"}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="(eventForm.get('location')?.invalid && (eventForm.get('location')?.dirty || eventForm.get('location')?.touched))">
+    <p *ngIf="eventForm.get('location')?.errors && eventForm.get('location')?.errors!['required']">Location is required!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Default Price</mat-label>
+    <input matInput formControlName="defaultPrice" type="number" placeholder="0" required [ngClass]="{'invalid-input': eventForm.get('defaultPrice')?.errors && (eventForm.get('defaultPrice')?.dirty || eventForm.get('defaultPrice')?.touched)}" />
+  </mat-form-field>
+  <div *ngIf="(eventForm.get('defaultPrice')?.invalid && (eventForm.get('defaultPrice')?.dirty || eventForm.get('defaultPrice')?.touched))">
+    <p *ngIf="eventForm.get('defaultPrice')?.errors && eventForm.get('defaultPrice')?.errors!['required']">Default price is required!</p>
+  </div>
+  
+  <mat-form-field class="full-width">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date" required [ngClass]="{'invalid-input': eventForm.get('date')?.errors && (eventForm.get('date')?.dirty || eventForm.get('date')?.touched)}" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div *ngIf="(eventForm.get('date')?.invalid && (eventForm.get('date')?.dirty || eventForm.get('date')?.touched))">
+    <p *ngIf="eventForm.get('date')?.errors && eventForm.get('date')?.errors!['required']">Date is required!</p>
+  </div>
+
+  <mat-form-field class="full-width">
+    <mat-label>Time (HH:mm)</mat-label>
+    <input matInput type="time" formControlName="time" required>
+  </mat-form-field>
+  <div *ngIf="(eventForm.get('time')?.invalid && (eventForm.get('time')?.dirty || eventForm.get('time')?.touched))">
+    <p *ngIf="eventForm.get('time')?.errors && eventForm.get('time')?.errors!['required']">Time is required!</p>
+  </div>
+
+  <div class="full-width" style="margin-top: 16px;">
+    <label>Images</label><br/>
+    <input type="file" accept=".jpg,.jpeg,.png" (change)="onFileSelected($event)" multiple />
+    <div *ngIf="selectedImageUrls.length > 0" style="margin-top: 8px;">
+      <p><strong>Preview:</strong></p>
+      <div *ngFor="let url of selectedImageUrls; let i = index">
+        <img [src]="url" alt="Uploaded image" style="width: 100px; margin-right: 10px;" />
+        <mat-icon fontIcon="close" (click)="removeImage(i)"></mat-icon>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button type="submit" mat-raised-button color="primary" (click)="onUpdate()" [disabled]="!eventForm.valid">Update</button>
+  <button type="reset" mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

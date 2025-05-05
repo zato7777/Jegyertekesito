@@ -1,0 +1,18 @@
+<div class="back-button" (click)="navigateToEvents()">
+    <mat-icon fontIcon="arrow_back"></mat-icon>
+    <span>Back to events</span>
+</div>
+<div class="event-details-container" *ngIf="event">
+    <h1>{{ event.title }}</h1>
+    <p><strong>Organizer:</strong> {{ event.organizer?.name  || "Deleted user!" }}</p>
+    <p><strong>Location:</strong> {{ event.location.name }}</p>
+    <p><strong>Date:</strong> {{ eventDate | date:'yyyy-MM-dd'}}</p>
+    <p><strong>Time:</strong> {{ eventTime }}</p>
+    <p><strong>Prices from:</strong> {{ event.defaultPrice }} HUF</p>
+    <p><strong>Event images:</strong></p>
+    <div class="image-container" *ngIf="event.images && event.images.length">
+        <img *ngFor="let img of event.images" [src]="img" alt="Event image" style="max-width: 200px; max-height: 200px; margin: 5px;">
+      </div>
+      <span *ngIf="!event.images || event.images.length === 0">No images</span>
+    <button *ngIf="isLoggedIn" class="reservation-button" (click)="openReservation()">Make a reservation</button>
+</div>
