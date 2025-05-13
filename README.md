@@ -11,12 +11,12 @@ A program futtatásához szükséges a Nodejs telepítése is.
 
 2. MongoDB konténer indítása Docker segítségével,
   szükséges parancsok: docker build -t my-mongo-image -f server/Dockerfile .
-                       docker run --name my-mongo -p 6000:27017 -d my-mongo-image
+docker run --name my-mongo -p 6000:27017 -d my-mongo-image
 
-3. Adatbázis és példa adatok betöltése a dump mappából,
+4. Adatbázis és példa adatok betöltése a dump mappából,
   szükséges parancs: mongorestore --host localhost --port 6000 dump
 
-4. Backend szerver telepítése és futtatása,
+5. Backend szerver telepítése és futtatása,
   szükséges parancsok a gyökér könyvtáron belüli server mappában: npm install
                                                                   npm run build
                                                                   npm run start
